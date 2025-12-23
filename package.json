@@ -1,0 +1,27 @@
+{
+  "name": "made",
+  "version": "1.0.0",
+  "description": "project of made by yachai",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "bcrypt": "^6.0.0",
+    "colores": "^1.0.1",
+    "colors": "^1.4.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.16.0",
+    "nodemon": "^3.1.11",
+    "pg": "^8.16.3",
+    "sequelize": "^6.37.7"
+  }
+}
