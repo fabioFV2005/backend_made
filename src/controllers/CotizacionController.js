@@ -9,12 +9,21 @@ export const crearCotizacion = async (req, res) => {
                 message: "Faltan campos obligatorios"
             })
         }
+
+        const fechaDisponibilidad = new Date(disponibility);
+        if (isNaN(fechaDisponibilidad.getTime())) {
+            return res.status(400).json({
+                success: false,
+                message: "La fecha de disponibilidad tiene un formato inválido. Usa formato: YYYY-MM-DD"
+            });
+        }
+
         const nuevaCotizacion = await Cotizacion.create({
             name,
             phone,
             size: parseFloat(size),
             plans,
-            disponibility: disponibility || null,
+            disponibility: fechaDisponibilidad,
             description: description || null,
         })
         res.status(201).json({message: 'Cotización creada',
