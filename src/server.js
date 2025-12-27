@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import { db } from './config/db.js'
 import User from './models/User.js'
 import authRouter from './routes/authRouter.js'
+import ProjectRouter from './routes/ProjectRouter.js'
 import cotizacionRoutes from './routes/cotizacionRouter.js'
 
 
@@ -28,6 +29,7 @@ app.use(express.json())
 // app.use('/api/budgets')
 app.use('/api/auth', authRouter)
 
+app.use('/api/projects', ProjectRouter)
 // cotizaciones
 app.use('/cotizaciones', cotizacionRoutes)
 
