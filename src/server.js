@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import { db } from './config/db.js'
 import User from './models/User.js'
 import authRouter from './routes/authRouter.js'
+import ProjectRouter from './routes/ProjectRouter.js'
 
 export async function connectDB() {
     try {
@@ -25,5 +26,7 @@ app.use(express.json())
 
 // app.use('/api/budgets')
 app.use('/api/auth', authRouter)
+
+app.use('/api/projects', ProjectRouter)
 
 export default app

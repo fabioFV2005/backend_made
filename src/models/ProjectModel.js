@@ -36,8 +36,8 @@ const Project = sequelize.define('Project', {
         allowNull: true
     }
 }, {
-    tableName: 'projects',
+    tableName: 'Projects',
     timestamps: true 
 });
 
-module.exports = Project;
+export default Project
