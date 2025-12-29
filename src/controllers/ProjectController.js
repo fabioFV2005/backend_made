@@ -1,5 +1,6 @@
-import Project from "../models/ProjectModel";
-
+import Project from "../models/Project.js";
+import multer from 'multer';
+import bodyParser from 'body-parser';
 export const crearProyecto = async (req, res) => {
     const { name, description, investment, startDate, deliveryDate, location, files } = req.body
     

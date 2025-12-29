@@ -20,10 +20,6 @@ const User = db.define('User', {
         allowNull: false,
         unique: true
     },
-    token: {
-        type: DataTypes.STRING(6),
-        allowNull: true
-    },
     role: {
         type: DataTypes.ENUM('ADMIN', 'SALES', 'USER'),
         defaultValue: 'USER'

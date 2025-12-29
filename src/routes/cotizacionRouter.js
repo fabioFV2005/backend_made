@@ -1,5 +1,5 @@
 import express from 'express'
-import { crearCotizacion, getCotizaciones } from '../controllers/CotizacionController'
+import { crearCotizacion, getCotizaciones } from '../controllers/CotizacionController.js'
 
 const router = express.Router()
 

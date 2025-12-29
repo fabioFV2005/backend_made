@@ -1,7 +1,8 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+import { DataTypes } from 'sequelize';
+import { db } from '../config/db.js';
 
-const Project = sequelize.define('Project', {
+
+const Project = db.define('Project', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -32,7 +33,7 @@ const Project = sequelize.define('Project', {
         allowNull: false
     },
     files: {
-        type: DataTypes.STRING(250), 
+        type: DataTypes.JSON, 
         allowNull: true
     }
 }, {

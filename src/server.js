@@ -1,12 +1,14 @@
 import express from 'express' 
 import colors from 'colors'
 import morgan from 'morgan'
+import cors from 'cors'
 import { db } from './config/db.js'
 import User from './models/User.js'
 import authRouter from './routes/authRouter.js'
 import ProjectRouter from './routes/ProjectRouter.js'
 import cotizacionRoutes from './routes/cotizacionRouter.js'
-
+import { corsConfig } from './config/cors.js'
+import bodyParser  from 'body-parser'
 
 export async function connectDB() {
     try {
@@ -20,10 +22,15 @@ export async function connectDB() {
 }
 connectDB()
 
+
+
+
 const app = express()
 
+app.use(cors(corsConfig))
 app.use(morgan('dev'))
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.json())
 
 // app.use('/api/budgets')

@@ -50,7 +50,7 @@ export class AuthController {
             }
             // generamos el jwt con el id del usuario
             const token = generateJWT(user.id)
-            res.json(token)
+            res.send(token)
 
         }catch (error) {
 

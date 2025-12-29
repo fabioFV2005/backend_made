@@ -1,10 +1,15 @@
 import express from 'express';
-const ProjectRouter = express.Router();
-import { crearProject, getProjects, editarProject, eliminarProject } from '../controllers/ProjectController';
+import { authenticate } from '../middleware/auth.js';
+import { crearProyecto, getProjects, editarProject, eliminarProject } from '../controllers/ProjectController.js';
+const router = express.Router();
 
-router.post('/', crearProject);
+router.post('/',
+    authenticate,
+    crearProyecto);
 router.get('/', getProjects);
-router.put('/:id', editarProject); 
+router.put('/:id',
+    authenticate,
+    editarProject); 
 router.delete('/:id', eliminarProject); 
 
-export default ProjectRouter;
+export default router;
