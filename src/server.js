@@ -1,23 +1,14 @@
 import express from 'express' 
 import colors from 'colors'
 import morgan from 'morgan'
-import cors from "cors"
-import dotenv from "dotenv"
+import cors from 'cors'
 import { db } from './config/db.js'
 import User from './models/User.js'
 import authRouter from './routes/authRouter.js'
+import ProjectRouter from './routes/ProjectRouter.js'
 import cotizacionRoutes from './routes/cotizacionRouter.js'
-
-dotenv.config()
-const app = express()
-
-const FRONT_PORT = process.env.FRONT_PORT || 5173;
-
-app.use(cors({
-  origin: `http://localhost:${FRONT_PORT}`,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-}));
+import { corsConfig } from './config/cors.js'
+import bodyParser  from 'body-parser'
 
 export async function connectDB() {
     try {
@@ -31,13 +22,21 @@ export async function connectDB() {
 }
 connectDB()
 
-app.use(morgan('dev'))
 
+
+
+const app = express()
+
+app.use(cors(corsConfig))
+app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.json())
 
 // app.use('/api/budgets')
 app.use('/api/auth', authRouter)
 
+app.use('/api/projects', ProjectRouter)
 // cotizaciones
 app.use('/cotizaciones', cotizacionRoutes)
 

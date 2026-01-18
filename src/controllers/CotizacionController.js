@@ -1,4 +1,4 @@
-import Cotizacion from '../models/cotizacionModel.js'
+import Cotizacion from '../models/Cotizacion.js'
 
 export const crearCotizacion = async (req, res) => {
     const { name, phone, size, disponibility, description } = req.body;
