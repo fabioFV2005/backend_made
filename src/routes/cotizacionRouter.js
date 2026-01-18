@@ -1,10 +1,10 @@
-import express from 'express'
-import { crearCotizacion, getCotizaciones } from '../controllers/CotizacionController.js'
+import express from 'express';
+import { crearCotizacion, getCotizaciones } from '../controllers/cotizacionController.js';
+import { upload } from '../utils/upload.js';
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/cotizaciones', crearCotizacion)
+router.post('/', upload.single('plans'), crearCotizacion);
+router.get('/', getCotizaciones);
 
-router.get('/cotizaciones', getCotizaciones)
-
-export default router
+export default router;
