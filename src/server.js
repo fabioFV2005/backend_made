@@ -10,6 +10,7 @@ import cotizacionRoutes from './routes/cotizacionRouter.js'
 import { corsConfig } from './config/cors.js'
 import bodyParser  from 'body-parser'
 
+
 export async function connectDB() {
     try {
         await db.authenticate()
@@ -21,8 +22,6 @@ export async function connectDB() {
     }
 }
 connectDB()
-
-
 
 
 const app = express()

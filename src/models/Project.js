@@ -35,6 +35,11 @@ const Project = db.define('Project', {
     files: {
         type: DataTypes.JSON, 
         allowNull: true
+    },
+    status:{
+        type: DataTypes.ENUM('enproceso','terminado'),
+        defaultValue:('enproceso'),
+        allowNull:false
     }
 }, {
     tableName: 'Projects',

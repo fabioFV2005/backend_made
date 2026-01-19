@@ -1,16 +1,12 @@
 import cors from 'cors'
-export const corsConfig =
-{
-    origin:function(origin, callback){
-        const allowedList = [process.env.FRONTEND_URL]
-         if(process.argv[2] === '--api') {
-            allowedList.push(undefined)
-        }
+import dotenv from 'dotenv'
+dotenv.config()
+export const corsConfig = {
+  origin: (origin, callback) => {
+    const allowed = process.env.FRONTEND_URL
 
-        if(allowedList.includes(origin)) {
-            callback(null, true)
-        } else {
-            callback(new Error('Error de CORS'))
-        }
-    }
+    if (!origin) return callback(null, true)
+    if (origin === allowed) return callback(null, true)
+    return callback(null, false)
+  }
 }

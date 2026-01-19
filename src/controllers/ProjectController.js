@@ -18,7 +18,8 @@ export const crearProyecto = async (req, res) => {
             startDate,
             deliveryDate: deliveryDate || null,
             location,
-            files: files || null
+            files: files || null,
+            status: status ||'enproceso'
         })
         res.status(201).json({
             message: 'Proyecto creado con éxito',
@@ -44,7 +45,7 @@ export const getProjects = async (req, res) => {
 
 export const editarProject = async (req, res) => {
     const { id } = req.params // Obtenemos el ID de la URL
-    const { name, description, investment, startDate, deliveryDate, location, files } = req.body
+    const { name, description, investment, startDate, deliveryDate, location, files,status } = req.body
 
     try {
         const proyecto = await Project.findByPk(id)
@@ -61,7 +62,8 @@ export const editarProject = async (req, res) => {
             startDate: startDate || proyecto.startDate,
             deliveryDate: deliveryDate || proyecto.deliveryDate,
             location: location || proyecto.location,
-            files: files || proyecto.files
+            files: files || proyecto.files,
+            status: status ||proyecto.status
         })
 
         res.status(200).json({
